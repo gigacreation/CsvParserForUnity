@@ -53,7 +53,10 @@ namespace GigaCreation.Tools.CsvParser
 
                 for (var columnIndex = 0; columnIndex < table[0].Count; columnIndex++)
                 {
-                    dict.Add(table[0][columnIndex], table[rowIndex][columnIndex]);
+                    if (table[rowIndex].Count > columnIndex)
+                    {
+                        dict.Add(table[0][columnIndex], table[rowIndex][columnIndex]);
+                    }
                 }
 
                 result.Add(dict);

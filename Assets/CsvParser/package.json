@@ -1,6 +1,6 @@
 {
     "name": "jp.gigacreation.tools.csvparser",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "displayName": "CSV Parser",
     "description": "This package allows you to parse CSV text.",
     "unity": "2021.3",
