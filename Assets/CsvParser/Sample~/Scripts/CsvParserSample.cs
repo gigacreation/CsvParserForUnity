@@ -19,8 +19,8 @@ namespace GigaCreation.Tools.CsvParser.Sample
         [SerializeField] private string _csvPath;
 
         private readonly StringBuilder _keysBuilder = new StringBuilder();
-        private readonly StringBuilder _valuesBuilder = new();
-        private readonly StringBuilder _equalityOperatorBuilder = new();
+        private readonly StringBuilder _valuesBuilder = new StringBuilder();
+        private readonly StringBuilder _equalityOperatorBuilder = new StringBuilder();
 
         private void Start()
         {
@@ -53,8 +53,6 @@ namespace GigaCreation.Tools.CsvParser.Sample
                     cells[rowIndex].GetComponent<TextMeshProUGUI>().SetText(text);
                 }
             }
-
-            Debug.Log(table);
         }
     }
 }

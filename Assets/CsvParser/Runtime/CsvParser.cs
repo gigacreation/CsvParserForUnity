@@ -8,7 +8,7 @@ namespace GigaCreation.Tools.CsvParser
 {
     public static class CsvParser
     {
-        public static List<List<string>> Parse(string csv)
+        public static List<List<string>> Parse(string csv, bool trim = false)
         {
             var reader = new StringReader(csv);
             var result = new List<List<string>>();
@@ -23,15 +23,15 @@ namespace GigaCreation.Tools.CsvParser
                     break;
                 }
 
-                result.Add(SplitLine(line));
+                result.Add(SplitLine(line, trim));
             }
 
             return result;
         }
 
-        public static List<Dictionary<string, string>> ParseIntoDictionaries(string csv)
+        public static List<Dictionary<string, string>> ParseIntoDictionaries(string csv, bool trim = false)
         {
-            List<List<string>> table = Parse(csv);
+            List<List<string>> table = Parse(csv, trim);
 
             if ((table.Count == 0) || table[0].Any(string.IsNullOrEmpty))
             {
@@ -65,7 +65,7 @@ namespace GigaCreation.Tools.CsvParser
             return result;
         }
 
-        private static List<string> SplitLine(string line)
+        private static List<string> SplitLine(string line, bool trim)
         {
             var columns = new List<string>();
             var builder = new StringBuilder(line.Length);
@@ -75,7 +75,11 @@ namespace GigaCreation.Tools.CsvParser
             {
                 if ((line[i] == ',') && !isInLiteral)
                 {
-                    columns.Add(builder.ToString());
+                    string column = trim
+                        ? builder.ToString().Trim()
+                        : builder.ToString();
+
+                    columns.Add(column);
                     builder.Clear();
 
                     continue;
