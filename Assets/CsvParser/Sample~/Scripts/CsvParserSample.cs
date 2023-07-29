@@ -17,6 +17,7 @@ namespace GigaCreation.Tools.CsvParser.Sample
 
         [Header("Parameters")]
         [SerializeField] private string _csvPath;
+        [SerializeField] private bool _trim;
 
         private readonly StringBuilder _keysBuilder = new StringBuilder();
         private readonly StringBuilder _valuesBuilder = new StringBuilder();
@@ -26,7 +27,7 @@ namespace GigaCreation.Tools.CsvParser.Sample
         {
             string csv = Resources.Load<TextAsset>(_csvPath).text;
 
-            List<List<string>> table = CsvParser.Parse(csv);
+            List<List<string>> table = CsvParser.Parse(csv, _trim);
 
             int numOfRows = table.Count;
             int numOfColumns = table.Max(row => row.Count);

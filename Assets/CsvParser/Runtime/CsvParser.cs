@@ -75,11 +75,7 @@ namespace GigaCreation.Tools.CsvParser
             {
                 if ((line[i] == ',') && !isInLiteral)
                 {
-                    string column = trim
-                        ? builder.ToString().Trim()
-                        : builder.ToString();
-
-                    columns.Add(column);
+                    columns.Add(trim ? builder.ToString().Trim() : builder.ToString());
                     builder.Clear();
 
                     continue;
@@ -103,7 +99,7 @@ namespace GigaCreation.Tools.CsvParser
                 builder.Append(line[i]);
             }
 
-            columns.Add(builder.ToString());
+            columns.Add(trim ? builder.ToString().Trim() : builder.ToString());
 
             return columns;
         }

@@ -678,6 +678,7 @@ MonoBehaviour:
   _column: {fileID: 726192279}
   _cell: {fileID: 164794439}
   _csvPath: Sample
+  _trim: 0
 --- !u!4 &1641244826
 Transform:
   m_ObjectHideFlags: 0
